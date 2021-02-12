@@ -29,16 +29,20 @@ function getJokes() {
 
 function addJoke() {
   let newJoke = {
+    whoseJoke: $('#whoseJokeIn').val(),
     jokeQuestion: $('#questionIn').val(),
-    PunchLine: $('#punchlineIn').val(),
-    whose: $('#whoseJokeIn'),
+    punchLine: $('#punchlineIn').val(),
+    
+  
   };
-}
+console.log('joking', newJoke);
 
 $.ajax({
   type: 'POST',
   url: '/addJokes',
   data: newJoke
 }).then(function (response) {
+  getJokes();
   console.log(response);
 });
+}
